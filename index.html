@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TO DO LIST</title>
+</head>
+<style>
+    body {
+        background-color: #f0f2f5;
+        font-family: 'Segoe UI', sans-serif;
+        display: flex;
+        justify-content: center;
+        padding-top: 50px;
+    }
+
+    .container {
+        background-color: white;
+        padding: 30px;
+        border-radius: 15px;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+        width: 100%;
+        max-width: 400px;
+    }
+
+    h1 {
+        text-align: center;
+        margin-bottom: 20px;
+        color: #333;
+    }
+
+    #taskInput {
+        width: 70%;
+        padding: 10px;
+        font-size: 1em;
+        border: 1px solid #ccc;
+        border-radius: 8px;
+    }
+
+    #addTask {
+        padding: 10px 15px;
+        font-size: 1.5em;
+        background-color: #28a745;
+        color: white;
+        border: none;
+        border-radius: 8px;
+        cursor: pointer;
+        margin-left: 5px;
+    }
+
+    #addTask:hover {
+        background-color: #218838;
+    }
+
+    ul {
+        list-style: none;
+        padding-left: 0;
+        margin-top: 20px;
+    }
+
+    li {
+        background-color: #eee;
+        margin: 10px 0;
+        padding: 10px 15px;
+        border-radius: 8px;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+    }
+
+    li.completed {
+        text-decoration: line-through;
+        color: gray;
+    }
+
+    button.delete {
+        background-color: #dc3545;
+        color: white;
+        border: none;
+        padding: 5px 10px;
+        border-radius: 5px;
+    }
+</style>
+
+<body>
+    <div class="container">
+        <h1>TO DO LIST</h1>
+        <input type="text" id="taskInput" placeholder="Enter a task..." />
+        <button id="addTask">Add Task</button>
+
+        <ul id="parent">
+
+        </ul>
+    </div>
+
+
+    <script>
+        let taskInput = document.getElementById("taskInput")
+        let addTask = document.getElementById("addTask")
+        let parent = document.getElementById("parent")
+
+        addTask.addEventListener("click", () => {
+            tasktext = taskInput.value.trim();
+            if (tasktext != "") {
+                let child = document.createElement("li")
+                let dltb = document.createElement("button")
+                dltb.textContent = "X"
+
+                let span = document.createElement("span");
+                span.textContent = tasktext;
+                child.addEventListener("click", () => {
+                    child.style.textDecoration =
+                        child.style.textDecoration === "line-through" ? "none" : "line-through";
+                });
+                parent.appendChild(child)
+                child.appendChild(span)
+                child.appendChild(dltb)
+                taskInput.value = ""
+                taskInput.focus()
+
+                dltb.addEventListener("click", () => {
+                    child.remove()
+                })
+            }
+        })
+    </script>
+
+</body>
+
+</html>
