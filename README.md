@@ -20,6 +20,7 @@ A simple and user-friendly To-Do List application built using **HTML**, **CSS**,
 - JavaScript (Vanilla)
 
 ---
+🔗 **Live Demo:** [View To-Do List](https://sureshk1113.github.io/TO-DO-LIST/)
 
-https://sureshk1113.github.io/TO-DO-LIST/
+
 
